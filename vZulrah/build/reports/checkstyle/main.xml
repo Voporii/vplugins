@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.37">
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\Constants.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\Food.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\GearSetup.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\phases\SafeSpot.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\phases\ZulrahCycle.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\phases\ZulrahNode.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\phases\ZulrahPosition.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\phases\ZulrahTree.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\data\phases\ZulrahType.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\framework\SessionUpdater.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\framework\ZulrahTask.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\framework\overlay\ZulrahSession.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\framework\overlay\ZulrahStatsOverlay.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\framework\overlay\ZulrahTileOverlay.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Banking\DepositIntoBank.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Banking\DrinkFromPool.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Banking\EquipMagicGear.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Banking\GetNewRingOfDueling.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Banking\GoToBank.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Banking\WithdrawFromBank.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\AttackZulrah.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\AvoidAttack.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\DrinkPotions.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\Eating.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\EnterZulrah.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\GrabLoot.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\JadPhase.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\LeaveZulrah.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\PanicTeleport.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\RecoilRing.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\SetLongRange.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\SetRapid.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\SwitchGear.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\TogglePrayers.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\Traverse.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\tasks\Zulrah\UseSpecialAttack.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\vZulrahConfig.java">
+</file>
+<file name="C:\Users\Sabastian\Desktop\vplugins-source\vZulrah\src\main\java\net\unethicalite\plugins\zulrah\vZulrahPlugin.java">
+</file>
+</checkstyle>
