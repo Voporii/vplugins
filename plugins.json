@@ -1,0 +1,31 @@
+[{
+  "projectUrl": "https://discord.gg/",
+  "provider": "vplugins",
+  "name": "vZulrah",
+  "description": "Automatic Zulrah Killer",
+  "id": "vzulrah-plugin",
+  "releases": [{
+    "date": "2023-07-05",
+    "sha512sum": "B4BB8A68546ACFA3822BB4AE5D436C3E2AB627E90B2C9AC80AB7080FB90E9AD0C8209244FC44DAA245839F638D30BE0D681E45F092171F8189E60A5ECDEF02F8",
+    "version": "1.0.0",
+    "url": "",
+    "requires": "^1.0.0"
+  }]
+},
+  [{
+    "projectUrl": "https://discord.gg/",
+    "provider": "vplugins",
+    "name": "vForestry",
+    "description": "Tree Root Slayer",
+    "id": "vforestry-plugin",
+    "releases": [{
+      "date": "2023-07-05",
+      "sha512sum": "B4BB8A68546ACFA3822BB4AE5D436C3E2AB627E90B2C9AC80AB7080FB90E9AD0C8209244FC44DAA245839F638D30BE0D681E45F092171F8189E60A5ECDEF02F8",
+      "version": "0.0.0",
+      "url": "",
+      "requires": "^1.0.0"
+    }]
+  }]
+
+
+]
