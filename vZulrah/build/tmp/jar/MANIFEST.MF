@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Plugin-Version: 1.0.0
-Plugin-Id: vzulrah-plugin
-Plugin-Provider: vplugins
-Plugin-Description: Automatic Zulrah Killer
-Plugin-License: 3-Clause BSD License
-

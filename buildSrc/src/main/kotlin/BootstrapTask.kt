@@ -23,11 +23,15 @@ open class BootstrapTask : DefaultTask() {
     }
 
     private fun hash(file: ByteArray): String {
-        return MessageDigest.getInstance("SHA-512").digest(file).fold("", { str, it -> str + "%02x".format(it) }).toUpperCase()
+        return MessageDigest.getInstance("SHA-512").digest(file).fold("", { str, it -> str + "%02x".format(it) })
+            .toUpperCase()
     }
 
     private fun getBootstrap(filename: String): JSONArray? {
-        val bootstrapFile = File(filename).readLines()
+        val bootstrapFile = File(filename).readText()
+        if (bootstrapFile.isBlank()) {
+            return JSONArray()
+        }
 
         return JSONObject("{\"plugins\":$bootstrapFile}").getJSONArray("plugins")
     }
@@ -41,7 +45,8 @@ open class BootstrapTask : DefaultTask() {
             bootstrapReleaseDir.mkdirs()
 
             val plugins = ArrayList<JSONObject>()
-            val baseBootstrap = getBootstrap("$bootstrapDir/plugins.json") ?: throw RuntimeException("Base bootstrap is null!")
+            val baseBootstrap = getBootstrap("$bootstrapDir/plugins.json")
+                ?: throw RuntimeException("Base bootstrap is null!")
 
             project.subprojects.forEach {
                 if (it.project.properties.containsKey("PluginName") && it.project.properties.containsKey("PluginDescription")) {
@@ -50,21 +55,24 @@ open class BootstrapTask : DefaultTask() {
 
                     val releases = ArrayList<JsonBuilder>()
 
-                    releases.add(JsonBuilder(
+                    val sha512 = hash(plugin.readBytes())
+                    releases.add(
+                        JsonBuilder(
                             "version" to it.project.version,
-                            "requires" to "^1.0.0",
+                            "requires" to ProjectVersions.apiVersion,
                             "date" to formatDate(Date()),
-                            "url" to "https://github.com/imnottom/free-plugins/blob/master/release/${it.project.name}-${it.project.version}.jar?raw=true",
-                            "sha512sum" to hash(plugin.readBytes())
-                    ))
+                            "url" to "${project.rootProject.extra.get("GithubUrl")}/blob/master/release/${it.project.name}-${it.project.version}.jar?raw=true",
+                            "sha512sum" to sha512
+                        )
+                    )
 
                     val pluginObject = JsonBuilder(
-                            "name" to it.project.extra.get("PluginName"),
-                            "id" to nameToId(it.project.extra.get("PluginName") as String),
-                            "description" to it.project.extra.get("PluginDescription"),
-                            "provider" to it.project.extra.get("PluginProvider"),
-                            "projectUrl" to it.project.extra.get("ProjectSupportUrl"),
-                            "releases" to releases.toTypedArray()
+                        "name" to it.project.extra.get("PluginName"),
+                        "id" to nameToId(it.project.extra.get("PluginName") as String),
+                        "description" to it.project.extra.get("PluginDescription"),
+                        "provider" to it.project.extra.get("PluginProvider"),
+                        "projectUrl" to it.project.extra.get("ProjectSupportUrl"),
+                        "releases" to releases.toTypedArray()
                     ).jsonObject()
 
                     for (i in 0 until baseBootstrap.length()) {
@@ -74,9 +82,12 @@ open class BootstrapTask : DefaultTask() {
                             continue
                         }
 
-                        if (it.project.version.toString() in item.getJSONArray("releases").toString()) {
-                            pluginAdded = true
+                        val itemReleases = item.getJSONArray("releases")
+                        if (it.project.version.toString() in itemReleases.toString()) {
+                            val last = itemReleases.get(itemReleases.length() - 1) as JSONObject
+                            last.put("sha512sum", sha512)
                             plugins.add(item)
+                            pluginAdded = true
                             break
                         }
 
@@ -89,12 +100,20 @@ open class BootstrapTask : DefaultTask() {
                         plugins.add(pluginObject)
                     }
 
-                    plugin.copyTo(Paths.get(bootstrapReleaseDir.toString(), "${it.project.name}-${it.project.version}.jar").toFile())
+                    plugin.copyTo(
+                        Paths.get(bootstrapReleaseDir.toString(), "${it.project.name}-${it.project.version}.jar").toFile(),
+                        overwrite = true
+                    )
                 }
             }
 
+            val pluginsOut = ArrayList<String>()
+            for (json in plugins) {
+                pluginsOut.add(json.toString(2))
+            }
+
             File(bootstrapDir, "plugins.json").printWriter().use { out ->
-                out.println(plugins.toString())
+                out.println(pluginsOut.toString())
             }
         }
 

@@ -1,90 +1,54 @@
-//this works
-
-import ProjectVersions.openosrsVersion
+import ProjectVersions.unethicaliteVersion
 
 buildscript {
     repositories {
+        mavenCentral()
         gradlePluginPortal()
-    }
-    dependencies {
-        classpath("net.sf.proguard:proguard-gradle:6.2.2")
     }
 }
 
 plugins {
-    java //this enables annotationProcessor and implementation in dependencies
+    `java-library`
     checkstyle
+    kotlin("jvm") version "1.6.21"
 }
 
-<<<<<<< Updated upstream
-project.extra["GithubUrl"] = "https://github.com/Voporii/vplugins"
-project.extra["GithubUserName"] = "Voporii"
-project.extra["GithubRepoName"] = "vplugins"
-=======
-project.extra["GithubUrl"] = "https://github.com/imnottom/"
->>>>>>> Stashed changes
+project.extra["GithubUrl"] = "https://github.com/melxin/devious-plugins-extended"
+project.extra["GithubUserName"] = "melxin"
+project.extra["GithubRepoName"] = "devious-plugins-extended"
 
 apply<BootstrapPlugin>()
 
 allprojects {
-    group = "com.openosrs.externals"
-    apply<MavenPublishPlugin>()
-}
+    group = "net.unethicalite"
 
-allprojects {
-    apply<MavenPublishPlugin>()
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        jcenter()
-    }
-}
-
-subprojects {
-    group = "com.openosrs.externals"
-
-    project.extra["PluginProvider"] = "Tea"
-    project.extra["ProjectSupportUrl"] = "https://discord.gg/teas"
+    project.extra["PluginProvider"] = "melxin"
+    project.extra["ProjectSupportUrl"] = ""
     project.extra["PluginLicense"] = "3-Clause BSD License"
 
-    repositories {
-        jcenter {
-            content {
-                excludeGroupByRegex("com\\.openosrs.*")
-            }
-        }
-
-        exclusiveContent {
-            forRepository {
-                mavenLocal()
-            }
-            filter {
-                includeGroupByRegex("com\\.openosrs.*")
-                includeGroupByRegex("com\\.owain.*")
-            }
-        }
-    }
-
     apply<JavaPlugin>()
+    apply(plugin = "java-library")
+    apply(plugin = "kotlin")
+    apply(plugin = "checkstyle")
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
 
     dependencies {
         annotationProcessor(Libraries.lombok)
         annotationProcessor(Libraries.pf4j)
 
-        compileOnly("com.openosrs:http-api:$openosrsVersion+")
-        compileOnly("com.openosrs:runelite-api:$openosrsVersion+")
-        compileOnly("com.openosrs:runelite-client:$openosrsVersion+")
-        compileOnly("com.openosrs.rs:runescape-api:$openosrsVersion+")
-
-        implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.9.1")
-
+        compileOnly("net.unethicalite:http-api:$unethicaliteVersion+")
+        compileOnly("net.unethicalite:runelite-api:$unethicaliteVersion+")
+        compileOnly("net.unethicalite:runelite-client:$unethicaliteVersion+")
+        compileOnly("net.unethicalite.rs:runescape-api:$unethicaliteVersion+")
 
         compileOnly(Libraries.guice)
+        compileOnly(Libraries.javax)
         compileOnly(Libraries.lombok)
         compileOnly(Libraries.pf4j)
-
-
     }
 
     configure<JavaPluginConvention> {
@@ -92,43 +56,20 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    configure<PublishingExtension> {
-        repositories {
-            maven {
-                url = uri("$buildDir/repo")
-            }
-        }
-        publications {
-            register("mavenJava", MavenPublication::class) {
-                from(components["java"])
-            }
-        }
-    }
-
     tasks {
         withType<JavaCompile> {
             options.encoding = "UTF-8"
         }
-
-        register<Copy>("copyDeps") {
-            into("./build/deps/")
-            from(configurations["runtimeClasspath"])
-        }
-
-        /*withType<Jar> {
-            doLast {
-                copy {
-                    from("./build/libs/")
-                    into("../release/")
-                }
-            }
-        }*/
 
         withType<AbstractArchiveTask> {
             isPreserveFileTimestamps = false
             isReproducibleFileOrder = true
             dirMode = 493
             fileMode = 420
+        }
+
+        compileKotlin {
+            kotlinOptions.jvmTarget = "11"
         }
     }
 }
