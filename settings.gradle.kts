@@ -56,6 +56,10 @@ include("m-autoswitcher")
 include("m-powerfisher")
 include("m-wintertodt")
 
+include("vVorkath)
+include("vForestry"")
+include("vZulrah")
+
 //include("example-kotlin")
 
 for (project in rootProject.children) {
